@@ -1,6 +1,6 @@
 {
-  "name": "express-ts-jest-template",
-  "version": "1.0.0",
+  "name": "Nyam Backend",
+  "version": "0.0.1",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
@@ -9,9 +9,9 @@
     "build": "tsc",
     "start": "node .",
     "start:dev": "node --watch .",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:dev": "jest --watchAll",
-    "test:coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --passWithNoTests",
     "prepare": "husky install"
   },
   "keywords": [],
