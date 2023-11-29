@@ -8,7 +8,7 @@ import {
   generalError,
   notFoundMiddleware,
 } from "./middlewares/errorMiddleware.js";
-import pingController from "../app/controllers/pingController.js";
+import pingController from "../app/features/ping/controller/pingController.js";
 
 const debug = debugCreator("server:");
 
