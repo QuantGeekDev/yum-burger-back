@@ -1,15 +1,27 @@
-import { type Response, type Request } from "express";
-import type CustomError from "../CustomError/CustomError";
+import { type Response, type Request, type NextFunction } from "express";
 import debugCreator from "debug";
-const debug = debugCreator("server:errorMiddleware:");
+import chalk from "chalk";
+import CustomError from "../CustomError/CustomError.js";
 
-export const errorMiddleware = (
+const debug = debugCreator("server: errorMiddleware:");
+
+export const notFoundMiddleware = (
+  _req: Request,
+  _res: Response,
+  next: NextFunction,
+) => {
+  const error = new Error("Endpoint not found");
+  const customError = new CustomError(error, 404, "Endpoint not found");
+  next(customError);
+};
+
+export const generalError = (
   error: CustomError,
-  req: Request,
+  _req: Request,
   res: Response,
+  next: NextFunction,
 ) => {
   const { broadcastMessage, message, statusCode } = error;
-
-  debug(message);
+  debug(chalk.red(message));
   res.status(statusCode).json({ error: broadcastMessage });
 };

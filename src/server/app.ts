@@ -8,7 +8,8 @@ const app = express();
 
 export const startServer = (port: number) => {
   app.listen(port, () => {
-    debug(chalk.green("Server launched succesfully"));
+    const serverUrl = chalk.yellow(`http://localhost:${port}`);
+    debug(chalk.green("Server launched succesfully on", serverUrl));
   });
 };
 
