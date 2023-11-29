@@ -4,6 +4,9 @@
   "description": "",
   "type": "module",
   "main": "dist/index.js",
+  "engines": {
+    "node": "^20"
+  },
   "scripts": {
     "build:dev": "tsc -w",
     "build": "tsc",
@@ -37,7 +40,9 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "chalk": "^4",
+    "cors": "^2.8.5",
     "debug": "^4.3.4",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",

@@ -4,6 +4,8 @@ import chalk from "chalk";
 
 const debug = debugCreator("database:");
 
+/* istanbul ignore next */
+
 export const connectToDatabase = async (mongoUrl: string) => {
   try {
     await mongoose.connect(mongoUrl);
