@@ -1,4 +1,5 @@
 import debugCreator from "debug";
+import express from "express";
 import chalk from "chalk";
 import cors, { type CorsOptions } from "cors";
 import morgan from "morgan";
@@ -7,7 +8,7 @@ import {
   generalError,
   notFoundMiddleware,
 } from "./middlewares/errorMiddleware.js";
-import express from "express";
+import pingController from "../app/controllers/pingController.js";
 
 const debug = debugCreator("server:");
 
@@ -17,10 +18,12 @@ const corsOptions: CorsOptions = {
 
 debug(chalk.blue("Initializing middlewares"));
 
-app.disable("x-powered-by");
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use("/", notFoundMiddleware);
+app.get("/", pingController);
+
+app.use(notFoundMiddleware);
+
 app.use(generalError);
