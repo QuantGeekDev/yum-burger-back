@@ -17,6 +17,7 @@ const corsOptions: CorsOptions = {
 
 debug(chalk.blue("Initializing middlewares"));
 
+app.disable("x-powered-by");
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(express.json());
