@@ -1,4 +1,4 @@
-import request, { type Response } from "supertest";
+import request from "supertest";
 import app from "../../app";
 
 describe("Given a notFound middleware", () => {
