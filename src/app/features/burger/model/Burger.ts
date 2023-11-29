@@ -1,12 +1,21 @@
 import { Schema, model } from "mongoose";
+import { type BurgerStructure } from "../types.js";
 
-const burgerSchema = new Schema({
-  name: { type: String, require: true },
+const ingredientsSchema = new Schema({
+  ingredients: { Array, default: [] },
+});
+
+const badgesSchema = new Schema({
+  badges: { Array, default: [] },
+});
+
+const burgerSchema = new Schema<BurgerStructure>({
+  name: { type: String, require: true, unique: true },
   price: { type: Number, require: true },
   imageUrl: { type: String, require: true },
-  ingredients: { type: Array<string>, require: true },
+  ingredients: [ingredientsSchema],
   isOrdered: { type: Boolean, require: true },
-  badges: { type: Array<string>, require: false },
+  badges: { badgesSchema },
 });
 
 const Burger = model("Burger", burgerSchema, "burgers");
