@@ -1,9 +1,13 @@
 import debugCreator from "debug";
 import chalk from "chalk";
-import app from "./app.js";
 import cors, { type CorsOptions } from "cors";
 import morgan from "morgan";
-import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import app from "./app.js";
+import {
+  generalError,
+  notFoundMiddleware,
+} from "./middlewares/errorMiddleware.js";
+import express from "express";
 
 const debug = debugCreator("server:");
 
@@ -15,5 +19,7 @@ debug(chalk.blue("Initializing middlewares"));
 
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
+app.use(express.json());
 
-app.use(errorMiddleware);
+app.use("/", notFoundMiddleware);
+app.use(generalError);
