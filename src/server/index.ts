@@ -1,5 +1,6 @@
 import debugCreator from "debug";
 import express from "express";
+import helmet from "helmet";
 import chalk from "chalk";
 import cors, { type CorsOptions } from "cors";
 import morgan from "morgan";
@@ -18,6 +19,7 @@ const corsOptions: CorsOptions = {
 
 debug(chalk.blue("Initializing middlewares"));
 
+app.use(helmet());
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(express.json());
