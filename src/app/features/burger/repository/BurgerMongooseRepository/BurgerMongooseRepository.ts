@@ -31,7 +31,7 @@ class BurgerMongooseRepository implements BurgerRepository {
       const burgers = await Burger.find({}).limit(limit!).lean();
       return burgers as BurgerStructure[];
     } catch (error) {
-      throw new CustomError(error as Error, 501, "Database Error");
+      throw new CustomError(error as Error, 400, "Database Error");
     }
   };
 }

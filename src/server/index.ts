@@ -26,7 +26,7 @@ const corsOptions: CorsOptions = {
 
 debug(chalk.blue("Initializing middlewares"));
 
-app.use(helmet());
+app.use(helmet.hidePoweredBy());
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(express.json());

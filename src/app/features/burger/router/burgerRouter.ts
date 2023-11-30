@@ -1,4 +1,4 @@
-import Router from "express";
+import { Router } from "express";
 import BurgerMongooseRepository from "../repository/BurgerMongooseRepository/BurgerMongooseRepository.js";
 import BurgerController from "../controller/burgersController.js";
 
