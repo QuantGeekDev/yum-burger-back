@@ -10,6 +10,7 @@ import {
   notFoundMiddleware,
 } from "./middlewares/errorMiddleware.js";
 import pingController from "../app/features/ping/controller/pingController.js";
+import { burgerRouter } from "../app/features/burger/router/burgerRouter.js";
 
 const debug = debugCreator("server:");
 
@@ -25,6 +26,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.get("/", pingController);
+app.use("/burgers", burgerRouter);
 
 app.use(notFoundMiddleware);
 
