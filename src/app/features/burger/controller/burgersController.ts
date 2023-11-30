@@ -1,10 +1,21 @@
+import CustomError from "../../../../server/CustomError/CustomError.js";
 import { type BurgerRepository } from "../repository/BurgerMongooseRepository/types.js";
-import { type Request, type Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
+
 class BurgerController {
   constructor(private readonly repository: BurgerRepository) {}
-  getBurgers = async (_req: Request, res: Response) => {
-    const burgers = await this.repository.getBurgers();
-    res.status(200).json({ burgers });
+  getBurgers = async (_req: Request, res: Response, next: NextFunction) => {
+    try {
+      const burgers = await this.repository.getBurgers();
+      res.status(200).json({ burgers });
+    } catch (error) {
+      const customError = new CustomError(
+        error as Error,
+        400,
+        "Error getting burgers",
+      );
+      next(customError);
+    }
   };
 }
 
