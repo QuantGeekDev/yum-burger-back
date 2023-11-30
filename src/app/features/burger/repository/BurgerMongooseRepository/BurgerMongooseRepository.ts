@@ -1,3 +1,4 @@
+import CustomError from "../../../../../server/CustomError/CustomError.js";
 import Burger from "../../model/Burger.js";
 import { type BurgerStructure } from "../../types.js";
 import {
@@ -11,17 +12,27 @@ const defaultOptions: BurgerRepositoryOptions = {
 
 class BurgerMongooseRepository implements BurgerRepository {
   getBurgers = async (
-    options: BurgerRepositoryOptions,
-  ): Promise<BurgerStructure> => {
-    if (options.limit) {
-      const { limit } = options;
-      const burgers = await Burger.find().limit(limit).lean();
-      return burgers[0];
-    }
+    options?: BurgerRepositoryOptions,
+  ): Promise<BurgerStructure[]> => {
+    try {
+      if (options) {
+        const { limit } = options;
+        if (!limit) {
+          const { limit } = defaultOptions;
+          const burgers = await Burger.find().limit(limit!).lean();
+          return burgers as BurgerStructure[];
+        }
 
-    const { limit } = defaultOptions;
-    const burgers = await Burger.find().limit(limit!).lean();
-    return burgers[0];
+        const burgers = await Burger.find().limit(limit).lean();
+        return burgers as BurgerStructure[];
+      }
+
+      const { limit } = defaultOptions;
+      const burgers = await Burger.find().limit(limit!).lean();
+      return burgers as BurgerStructure[];
+    } catch (error) {
+      throw new CustomError(error as Error, 501, "Database Error");
+    }
   };
 }
 
