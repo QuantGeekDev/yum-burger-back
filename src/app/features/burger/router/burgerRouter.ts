@@ -1,10 +1,10 @@
 import Router from "express";
-import BurgerMongooseRepository from "../repository/BurgerMongooseRepository/BurgerMongooseRepository";
-import BurgerController from "../controller/burgersController";
+import BurgerMongooseRepository from "../repository/BurgerMongooseRepository/BurgerMongooseRepository.js";
+import BurgerController from "../controller/burgersController.js";
+
+export const burgerRouter = Router();
 
 const burgerRepository = new BurgerMongooseRepository();
 const burgerController = new BurgerController(burgerRepository);
 
-export const burgerRouter = Router();
-
-burgerRouter.get("/burgers", burgerController.getBurgers);
+burgerRouter.get("/", burgerController.getBurgers);
