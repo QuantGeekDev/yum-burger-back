@@ -1,13 +1,24 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
-import mongoose from "mongoose";
+import mongoose, {
+  Model,
+  type Query,
+  model,
+  Mongoose,
+  Document,
+} from "mongoose";
 import { connectToDatabase } from "../../../../../database";
 import Burger from "../../model/Burger";
-import {
-  cheeseBurgerMock,
-  classicBurgerMock,
-} from "../../../../../mocks/Burger/BurgerMocks";
 import BurgerMongooseRepository from "./BurgerMongooseRepository";
 import CustomError from "../../../../../server/CustomError/CustomError";
+import {
+  classicBurgerMock,
+  cheeseBurgerMock,
+} from "../../../../../mocks/Burger/BurgerMocks";
+import { query } from "express";
+
+beforeEach(() => {
+  jest.resetAllMocks();
+});
 
 let database: MongoMemoryServer;
 

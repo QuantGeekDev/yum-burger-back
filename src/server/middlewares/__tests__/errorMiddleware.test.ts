@@ -1,6 +1,6 @@
 import { type Response, type Request, type NextFunction } from "express";
-import { generalError } from "./errorMiddleware";
-import CustomError from "../CustomError/CustomError";
+import { generalError } from "../errorMiddleware";
+import CustomError from "../../CustomError/CustomError";
 
 describe("Given an error middleware", () => {
   describe("When it receives a request with an error 'Test Error' with status code 500", () => {
