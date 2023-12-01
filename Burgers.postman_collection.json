@@ -1,0 +1,172 @@
+{
+  "info": {
+    "_postman_id": "7887f406-8078-468a-8df1-39becf0bf79d",
+    "name": "Burgers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "17880741"
+  },
+  "item": [
+    {
+      "name": "Dev",
+      "item": [
+        {
+          "name": "404 Dev",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "\r",
+                  "pm.test(\"Response status code is 404\", function () {\r",
+                  "    pm.expect(pm.response.code).to.equal(404);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response body contains the error message 'Endpoint not found'\", function () {\r",
+                  "    const responseData = pm.response.text();\r",
+                  "    \r",
+                  "    pm.expect(responseData).to.include(\"Endpoint not found\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Error title is present in the response body\", function () {\r",
+                  "    pm.expect(pm.response.json()).to.include(\"Error\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 200ms\", function () {\r",
+                  "  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/asdasd",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["asdasd"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Burgers Dev",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/burgers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["burgers"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ping Dev",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://alex-andru-202309-bcn-back.onrender.com/",
+              "protocol": "https",
+              "host": ["alex-andru-202309-bcn-back", "onrender", "com"],
+              "path": [""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Prod",
+      "item": [
+        {
+          "name": "404 Prod",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "\r",
+                  "pm.test(\"Response status code is 404\", function () {\r",
+                  "    pm.expect(pm.response.code).to.equal(404);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response body contains the error message 'Endpoint not found'\", function () {\r",
+                  "    const responseData = pm.response.text();\r",
+                  "    \r",
+                  "    pm.expect(responseData).to.include(\"Endpoint not found\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Error title is present in the response body\", function () {\r",
+                  "    pm.expect(pm.response.json()).to.include(\"Error\");\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 200ms\", function () {\r",
+                  "  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://alex-andru-202309-bcn-back.onrender.com//asdasdas",
+              "protocol": "https",
+              "host": ["alex-andru-202309-bcn-back", "onrender", "com"],
+              "path": ["", "asdasdas"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ping Prod",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://alex-andru-202309-bcn-back.onrender.com/",
+              "protocol": "https",
+              "host": ["alex-andru-202309-bcn-back", "onrender", "com"],
+              "path": [""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Burgers Prod",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://alex-andru-202309-bcn-back.onrender.com/burgers/",
+              "protocol": "https",
+              "host": ["alex-andru-202309-bcn-back", "onrender", "com"],
+              "path": ["burgers", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
