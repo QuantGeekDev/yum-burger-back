@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { connectToDatabase } from "../../../database";
-import Burger from "../../../app/features/burger/model/Burger";
+import { connectToDatabase } from "../../../../../database";
+import Burger from "../../model/Burger";
 import {
   cheeseBurgerMock,
   classicBurgerMock,
-} from "../../../mocks/Burger/BurgerMocks";
-import app from "../../app";
-import { type BurgerStructure } from "../../../app/features/burger/types";
+} from "../../../../../mocks/Burger/BurgerMocks";
+import app from "../../../../../server/app";
+import { type BurgerStructure } from "../../types";
 
 let database: MongoMemoryServer;
 beforeAll(async () => {
