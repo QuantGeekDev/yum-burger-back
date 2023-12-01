@@ -15,6 +15,7 @@ import {
   cheeseBurgerMock,
 } from "../../../../../mocks/Burger/BurgerMocks";
 import { query } from "express";
+import { type BurgerRepositoryOptions } from "./types";
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -27,6 +28,16 @@ beforeAll(async () => {
   const databaseUrl = database.getUri();
   await connectToDatabase(databaseUrl);
   await Burger.create(classicBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
+  await Burger.create(cheeseBurgerMock);
   await Burger.create(cheeseBurgerMock);
 });
 
@@ -53,6 +64,16 @@ describe("Given a BurgerMongooseRepository's getBurgers method", () => {
       const burgers = await repository.getBurgers({ limit });
 
       expect(burgers).toHaveLength(1);
+    });
+  });
+
+  describe("When it receives a valid request with an empty options object", () => {
+    test("Then it should return 10 items by default", async () => {
+      const expectedBurgersLength = 10;
+      const options: BurgerRepositoryOptions = {};
+      const burgers = await repository.getBurgers(options);
+
+      expect(burgers).toHaveLength(expectedBurgersLength);
     });
   });
 });

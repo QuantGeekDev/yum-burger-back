@@ -3,12 +3,18 @@ module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
   setupFilesAfterEnv: ["./src/setupTests.ts"],
-  testMatch: ["**/src/**/*.test.ts"],
+  testMatch: ["**/src/**/*.test.ts", "**/src/**/__tests__/*.ts"],
   resolver: "jest-ts-webcompat-resolver",
-  testPathIgnorePatterns: ["src/server/app.ts"],
+  collectCoverage: true,
+  coverageProvider: "v8",
+  coverageThreshold: {
+    global: {
+      lines: 80,
+    },
+  },
+  errorOnDeprecated: true,
   collectCoverageFrom: [
-    "src/**/*.{ts,tsx}",
-    "!**/node_modules/**",
+    "src/**/*.{ts}",
     "!src/server/app.ts",
     "!**/types.ts",
     "!src/setupTests.ts",
