@@ -1,9 +1,9 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "node",
   setupFilesAfterEnv: ["./src/setupTests.ts"],
-  testMatch: ["**/src/**/*.test.ts", "**/src/**/__tests__/*.ts"],
+  testEnvironment: "node",
+  testMatch: ["**/src/**/*.test.ts"],
   resolver: "jest-ts-webcompat-resolver",
   collectCoverage: true,
   coverageProvider: "v8",
@@ -14,7 +14,7 @@ module.exports = {
   },
   errorOnDeprecated: true,
   collectCoverageFrom: [
-    "src/**/*.{ts}",
+    "src/**/*.ts",
     "!src/server/app.ts",
     "!**/types.ts",
     "!src/setupTests.ts",
