@@ -15,23 +15,19 @@ class BurgerMongooseRepository implements BurgerRepository {
     options?: BurgerRepositoryOptions,
   ): Promise<BurgerStructure[]> => {
     try {
-      if (options) {
-        const { limit } = options;
-        if (!limit) {
-          const { limit } = defaultOptions;
-          const burgers = await Burger.find({}).limit(limit!).lean();
-          return burgers as BurgerStructure[];
-        }
+      if (!options || !("limit" in options)) {
+        const { limit } = defaultOptions;
+        const burgers = await Burger.find().limit(limit!).lean();
 
-        const burgers = await Burger.find({}).limit(limit).lean();
         return burgers as BurgerStructure[];
       }
 
-      const { limit } = defaultOptions;
+      const { limit } = options;
       const burgers = await Burger.find({}).limit(limit!).lean();
+
       return burgers as BurgerStructure[];
     } catch (error) {
-      throw new CustomError(error as Error, 400, "Database Error");
+      throw new CustomError(error as Error, 501, "Database Error");
     }
   };
 }

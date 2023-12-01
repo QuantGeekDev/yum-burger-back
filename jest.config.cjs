@@ -5,7 +5,6 @@ module.exports = {
   testEnvironment: "node",
   testMatch: ["**/src/**/*.test.ts"],
   resolver: "jest-ts-webcompat-resolver",
-  collectCoverage: true,
   coverageProvider: "v8",
   coverageThreshold: {
     global: {
