@@ -3,10 +3,7 @@ import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { connectToDatabase } from "../../../../../database";
 import Burger from "../../model/Burger";
-import {
-  cheeseBurgerMock,
-  classicBurgerMock,
-} from "../../../../../mocks/Burger/BurgerMocks";
+import { cheeseBurgerMock, classicBurgerMock } from "../../mocks/BurgerMocks";
 import app from "../../../../../server/app";
 import { type BurgerStructure } from "../../types";
 
@@ -26,7 +23,7 @@ afterAll(async () => {
 
 describe("Given a GET /burgers route", () => {
   const path = "/burgers";
-  describe("When it receives a valid GET request", () => {
+  describe("When it receives a valid request for burgers", () => {
     test("Then it should return a status code 200 and an array with a classic burger and a cheese burger ", async () => {
       const expectedStatusCode = 200;
 
@@ -38,11 +35,11 @@ describe("Given a GET /burgers route", () => {
     });
   });
 
-  describe("When it encounters an error", () => {
-    test("Then it should respond with code 400 and error message 'Error getting burgers' ", async () => {
+  describe("When it encounters an error getting the burgers", () => {
+    test("Then it should respond with code 500 and error message 'Error getting burgers' ", async () => {
       Burger.find = jest.fn().mockReturnValue(new Error("Test Error"));
 
-      const expectedStatusCode = 400;
+      const expectedStatusCode = 500;
       const expectedErrorMessage = "Error getting burgers";
 
       const response = await request(app).get(path).expect(expectedStatusCode);

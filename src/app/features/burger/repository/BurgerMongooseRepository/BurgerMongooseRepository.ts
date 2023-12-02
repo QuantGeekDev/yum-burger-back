@@ -27,7 +27,7 @@ class BurgerMongooseRepository implements BurgerRepository {
 
       return burgers as BurgerStructure[];
     } catch (error) {
-      throw new CustomError(error as Error, 501, "Database Error");
+      throw new CustomError(error as Error, 500, "Error getting burgers");
     }
   };
 }

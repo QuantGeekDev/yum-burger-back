@@ -1,8 +1,8 @@
 import request from "supertest";
 import app from "../../app";
 
-describe("Given a GET / endpoint", () => {
-  describe("When it receives a reques with an endpoint that doesn't exist", () => {
+describe("Given a GET /i-dont-exist endpoint", () => {
+  describe("When it receives a request", () => {
     test("Then it should return a 404 status code and error message 'Endpoint not found' ", async () => {
       const expectedStatusCode = 404;
       const expectedPath = "/i-dont-exist";
