@@ -1,4 +1,3 @@
-import CustomError from "../../../../server/CustomError/CustomError.js";
 import { type BurgerRepository } from "../repository/BurgerMongooseRepository/types.js";
 import { type NextFunction, type Request, type Response } from "express";
 

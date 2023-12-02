@@ -8,8 +8,8 @@ class CustomError extends Error {
     broadcastMessage: string,
   ) {
     super(error.message);
-    this.statusCode = statusCode ?? 500;
-    this.broadcastMessage = broadcastMessage ?? "Internal Server Error";
+    this.statusCode = statusCode;
+    this.broadcastMessage = broadcastMessage;
   }
 }
 
