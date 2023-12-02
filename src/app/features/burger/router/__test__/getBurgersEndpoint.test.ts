@@ -39,10 +39,10 @@ describe("Given a GET /burgers route", () => {
   });
 
   describe("When it encounters an error", () => {
-    test("Then it should respond with code 400 and error message 'Error getting burgers' ", async () => {
+    test("Then it should respond with code 500 and error message 'Error getting burgers' ", async () => {
       Burger.find = jest.fn().mockReturnValue(new Error("Test Error"));
 
-      const expectedStatusCode = 400;
+      const expectedStatusCode = 500;
       const expectedErrorMessage = "Error getting burgers";
 
       const response = await request(app).get(path).expect(expectedStatusCode);

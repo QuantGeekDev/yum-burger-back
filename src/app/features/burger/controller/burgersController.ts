@@ -8,12 +8,7 @@ class BurgerController {
     try {
       const burgers = await this.repository.getBurgers();
       res.status(200).json({ burgers });
-    } catch (error) {
-      const customError = new CustomError(
-        error as Error,
-        400,
-        "Error getting burgers",
-      );
+    } catch (customError) {
       next(customError);
     }
   };
