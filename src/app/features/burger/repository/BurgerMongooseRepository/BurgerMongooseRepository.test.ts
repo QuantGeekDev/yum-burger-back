@@ -10,10 +10,7 @@ import { connectToDatabase } from "../../../../../database";
 import Burger from "../../model/Burger";
 import BurgerMongooseRepository from "./BurgerMongooseRepository";
 import CustomError from "../../../../../server/CustomError/CustomError";
-import {
-  classicBurgerMock,
-  cheeseBurgerMock,
-} from "../../../../../mocks/Burger/BurgerMocks";
+import { classicBurgerMock, cheeseBurgerMock } from "../../mocks/BurgerMocks";
 import { query } from "express";
 import { type BurgerRepositoryOptions } from "./types";
 

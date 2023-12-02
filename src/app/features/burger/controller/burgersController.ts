@@ -7,6 +7,7 @@ class BurgerController {
   getBurgers = async (_req: Request, res: Response, next: NextFunction) => {
     try {
       const burgers = await this.repository.getBurgers();
+
       res.status(200).json({ burgers });
     } catch (customError) {
       next(customError);

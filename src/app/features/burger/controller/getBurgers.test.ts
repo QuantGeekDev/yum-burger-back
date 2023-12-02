@@ -1,4 +1,4 @@
-import { burgersMock } from "../../../../mocks/Burger/BurgerMocks";
+import { burgersMock } from "../mocks/BurgerMocks";
 import CustomError from "../../../../server/CustomError/CustomError";
 import { type BurgerRepository } from "../repository/BurgerMongooseRepository/types";
 import BurgerController from "./burgersController";
