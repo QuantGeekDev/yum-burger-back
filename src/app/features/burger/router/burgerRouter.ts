@@ -1,6 +1,6 @@
 import { Router } from "express";
 import BurgerMongooseRepository from "../repository/BurgerMongooseRepository/BurgerMongooseRepository.js";
-import BurgerController from "../controller/burgersController.js";
+import BurgerController from "../controller/BurgerController.js";
 
 export const burgerRouter = Router();
 

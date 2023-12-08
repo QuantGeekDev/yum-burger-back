@@ -15,8 +15,8 @@ class BurgerController {
 
   deleteBurger = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { _id } = req.params;
-      const burger = await this.repository.deleteBurger(_id);
+      const { id } = req.params;
+      const burger = await this.repository.deleteBurger(id);
       res.status(200).json({ burger });
     } catch (customError) {
       next(customError);

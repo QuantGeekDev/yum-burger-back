@@ -1,7 +1,7 @@
 import { burgersFromDbMock } from "../mocks/BurgerMocks";
 import CustomError from "../../../../server/CustomError/CustomError";
 import { type BurgerRepository } from "../repository/BurgerMongooseRepository/types";
-import BurgerController from "./burgersController";
+import BurgerController from "./BurgerController";
 import { type Response, type Request, type NextFunction } from "express";
 
 describe("Given a burgersController's getBurger method", () => {
@@ -43,10 +43,12 @@ describe("Given a burgersController's getBurger method", () => {
   });
 
   describe("When it encounters an error", () => {
-    const repository: BurgerRepository = {
+    const repository: Pick<BurgerRepository, "getBurgers"> = {
       getBurgers: jest.fn().mockRejectedValue(new Error("Test Error")),
     };
-    const burgerController = new BurgerController(repository);
+    const burgerController = new BurgerController(
+      repository as BurgerRepository,
+    );
 
     const req = {};
     const res: Pick<Response, "json" | "status"> = {
