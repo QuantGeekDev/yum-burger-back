@@ -3,22 +3,25 @@ import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { connectToDatabase } from "../../../../../database";
 import Burger from "../../model/Burger";
-import { cheeseBurgerMock, classicBurgerMock } from "../../mocks/BurgerMocks";
+import {
+  cheeseBurgerFromDbMock,
+  classicBurgerFromDbMock,
+} from "../../mocks/BurgerMocks";
 import app from "../../../../../server/app";
 import { type BurgerStructure } from "../../types";
 
-let database: MongoMemoryServer;
+let server: MongoMemoryServer;
 beforeAll(async () => {
-  database = await MongoMemoryServer.create();
-  const databaseUrl = database.getUri();
+  server = await MongoMemoryServer.create();
+  const databaseUrl = server.getUri();
   await connectToDatabase(databaseUrl);
-  await Burger.create(classicBurgerMock);
-  await Burger.create(cheeseBurgerMock);
+  await Burger.create(classicBurgerFromDbMock);
+  await Burger.create(cheeseBurgerFromDbMock);
 });
 
 afterAll(async () => {
   await mongoose.disconnect();
-  await database.stop();
+  await server?.stop();
 });
 
 describe("Given a GET /burgers route", () => {
@@ -30,8 +33,8 @@ describe("Given a GET /burgers route", () => {
       const response = await request(app).get(path).expect(expectedStatusCode);
       const burgers = (await response.body.burgers) as BurgerStructure[];
 
-      expect(burgers[0]).toHaveProperty("name", classicBurgerMock.name);
-      expect(burgers[1]).toHaveProperty("name", cheeseBurgerMock.name);
+      expect(burgers[0]).toHaveProperty("name", classicBurgerFromDbMock.name);
+      expect(burgers[1]).toHaveProperty("name", cheeseBurgerFromDbMock.name);
     });
   });
 
