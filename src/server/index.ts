@@ -21,15 +21,14 @@ if (!frontendUrl) {
 }
 
 const corsOptions: CorsOptions = {
-  origin: [frontendUrl ?? "", "localhost:*"],
+  origin: [frontendUrl ?? "", "http://localhost:5173"],
 };
 
 debug(chalk.blue("Initializing middlewares"));
 
-app.use(helmet.hidePoweredBy());
-app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors(corsOptions));
 
 app.get("/", pingController);
 app.use("/burgers", burgerRouter);
