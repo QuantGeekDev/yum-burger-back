@@ -39,6 +39,15 @@ class BurgerMongooseRepository implements BurgerRepository {
       throw new CustomError(error as Error, 500, "Error deleting burger");
     }
   };
+
+  addBurger = async (burger: BurgerStructure): Promise<BurgerStructure> => {
+    try {
+      const addedBurger = await Burger.create(burger);
+      return addedBurger as BurgerStructure;
+    } catch (error) {
+      throw new CustomError(error as Error, 500, "Error adding burger");
+    }
+  };
 }
 
 export default BurgerMongooseRepository;
