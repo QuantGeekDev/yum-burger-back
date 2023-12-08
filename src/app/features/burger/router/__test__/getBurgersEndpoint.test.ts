@@ -10,10 +10,10 @@ import {
 import app from "../../../../../server/app";
 import { type BurgerStructure } from "../../types";
 
-let database: MongoMemoryServer;
+let server: MongoMemoryServer;
 beforeAll(async () => {
-  database = await MongoMemoryServer.create();
-  const databaseUrl = database.getUri();
+  server = await MongoMemoryServer.create();
+  const databaseUrl = server.getUri();
   await connectToDatabase(databaseUrl);
   await Burger.create(classicBurgerFromDbMock);
   await Burger.create(cheeseBurgerFromDbMock);
@@ -21,7 +21,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await mongoose.disconnect();
-  await database.stop();
+  await server?.stop();
 });
 
 describe("Given a GET /burgers route", () => {

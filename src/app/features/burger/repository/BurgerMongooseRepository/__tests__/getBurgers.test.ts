@@ -1,22 +1,14 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
-import mongoose, {
-  Model,
-  type Query,
-  model,
-  Mongoose,
-  Document,
-} from "mongoose";
+import mongoose from "mongoose";
 import { connectToDatabase } from "../../../../../../database";
 import Burger from "../../../model/Burger";
 import BurgerMongooseRepository from "../BurgerMongooseRepository";
-import CustomError from "../../../../../../server/CustomError/CustomError";
 import {
   classicBurgerFromDbMock,
   cheeseBurgerFromDbMock,
   classicBurgerMock,
   cheeseBurgerMock,
 } from "../../../mocks/BurgerMocks";
-import { query } from "express";
 import { type BurgerRepositoryOptions } from "../types";
 
 beforeEach(() => {
@@ -50,6 +42,7 @@ afterAll(async () => {
 
 describe("Given a BurgerMongooseRepository's getBurgers method", () => {
   const repository = new BurgerMongooseRepository();
+
   describe("When it receives a valid request", () => {
     test("Then it returns a promise for an array with a classic burger and a cheeseburger", async () => {
       const burgers = await repository.getBurgers();

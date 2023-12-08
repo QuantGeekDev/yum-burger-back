@@ -46,6 +46,7 @@ describe("Given a burgersController's deleteBurger method ", () => {
         burger: classicBurgerFromDbMock,
       });
     });
+
     describe("When it encounters an error handling the request", () => {
       const req: Pick<Request, "params"> = {
         params: { id: "testId" },
@@ -68,6 +69,7 @@ describe("Given a burgersController's deleteBurger method ", () => {
       const burgerController = new BurgerController(
         burgerRepository as BurgerMongooseRepository,
       );
+
       test("Then it should call its nextFunction method with a CustomError", async () => {
         const expectedErrorMessage = "Error deleting burger";
 

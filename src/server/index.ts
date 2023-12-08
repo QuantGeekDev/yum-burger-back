@@ -1,6 +1,5 @@
 import debugCreator from "debug";
 import express from "express";
-import helmet from "helmet";
 import chalk from "chalk";
 import cors, { type CorsOptions } from "cors";
 import morgan from "morgan";
