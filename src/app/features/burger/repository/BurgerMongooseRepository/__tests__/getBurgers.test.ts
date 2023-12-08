@@ -6,13 +6,18 @@ import mongoose, {
   Mongoose,
   Document,
 } from "mongoose";
-import { connectToDatabase } from "../../../../../database";
-import Burger from "../../model/Burger";
-import BurgerMongooseRepository from "./BurgerMongooseRepository";
-import CustomError from "../../../../../server/CustomError/CustomError";
-import { classicBurgerMock, cheeseBurgerMock } from "../../mocks/BurgerMocks";
+import { connectToDatabase } from "../../../../../../database";
+import Burger from "../../../model/Burger";
+import BurgerMongooseRepository from "../BurgerMongooseRepository";
+import CustomError from "../../../../../../server/CustomError/CustomError";
+import {
+  classicBurgerFromDbMock,
+  cheeseBurgerFromDbMock,
+  classicBurgerMock,
+  cheeseBurgerMock,
+} from "../../../mocks/BurgerMocks";
 import { query } from "express";
-import { type BurgerRepositoryOptions } from "./types";
+import { type BurgerRepositoryOptions } from "../types";
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -49,9 +54,9 @@ describe("Given a BurgerMongooseRepository's getBurgers method", () => {
     test("Then it returns a promise for an array with a classic burger and a cheeseburger", async () => {
       const burgers = await repository.getBurgers();
 
-      expect(burgers[0]).toHaveProperty("name", classicBurgerMock.name);
+      expect(burgers[0]).toHaveProperty("name", classicBurgerFromDbMock.name);
 
-      expect(burgers[1]).toHaveProperty("name", cheeseBurgerMock.name);
+      expect(burgers[1]).toHaveProperty("name", cheeseBurgerFromDbMock.name);
     });
   });
 

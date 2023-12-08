@@ -12,6 +12,16 @@ class BurgerController {
       next(customError);
     }
   };
+
+  deleteBurger = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { _id } = req.params;
+      const burger = await this.repository.deleteBurger(_id);
+      res.status(200).json({ burger });
+    } catch (customError) {
+      next(customError);
+    }
+  };
 }
 
 export default BurgerController;

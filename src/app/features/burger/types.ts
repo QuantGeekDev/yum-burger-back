@@ -6,3 +6,7 @@ export interface BurgerStructure {
   isOrdered: boolean;
   badges: string[];
 }
+
+export interface BurgerFromMongooseStructure extends BurgerStructure {
+  _id: string;
+}

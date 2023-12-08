@@ -33,7 +33,7 @@ class BurgerMongooseRepository implements BurgerRepository {
 
   deleteBurger = async (id: string): Promise<BurgerStructure> => {
     try {
-      const burger = await Burger.findByIdAndRemove({ id });
+      const burger = await Burger.findByIdAndRemove(id);
       return burger as BurgerStructure;
     } catch (error) {
       throw new CustomError(error as Error, 500, "Error getting burgers");
