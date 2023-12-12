@@ -39,6 +39,20 @@ class BurgerController {
       next(customError);
     }
   };
+
+  getBurgerById = async (
+    req: TypedRequestBody<string>,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const { body: id } = req;
+      const requestedBurger = await this.repository.getBurgerById(id);
+      res.status(200).json({ burger: requestedBurger });
+    } catch (customError) {
+      next(customError);
+    }
+  };
 }
 
 export default BurgerController;
