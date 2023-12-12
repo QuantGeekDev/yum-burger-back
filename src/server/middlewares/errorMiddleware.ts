@@ -19,7 +19,7 @@ export const generalError = (
   error: CustomError,
   _req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) => {
   const {
     broadcastMessage = "Internal Server Error",
@@ -27,5 +27,6 @@ export const generalError = (
     statusCode = 500,
   } = error;
   debug(chalk.red(message));
+
   res.status(statusCode).json({ error: broadcastMessage });
 };
