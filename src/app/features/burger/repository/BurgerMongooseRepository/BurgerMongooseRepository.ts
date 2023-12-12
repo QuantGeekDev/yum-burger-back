@@ -48,6 +48,15 @@ class BurgerMongooseRepository implements BurgerRepository {
       throw new CustomError(error as Error, 500, "Error adding burger");
     }
   };
+
+  getBurgerById = async (id: string) => {
+    try {
+      const requestedBurger = await Burger.findById({ _id: id });
+      return requestedBurger as BurgerStructure;
+    } catch (error) {
+      throw new CustomError(error as Error, 500, "Error getting burger by id");
+    }
+  };
 }
 
 export default BurgerMongooseRepository;
