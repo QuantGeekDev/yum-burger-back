@@ -3,6 +3,7 @@ import type BurgerMongooseRepository from "../../repository/BurgerMongooseReposi
 import BurgerController from "../BurgerController";
 import { type BurgerRepository } from "../../repository/BurgerMongooseRepository/types";
 import { classicBurgerFromDbMock } from "../../mocks/BurgerMocks";
+import CustomError from "../../../../../server/CustomError/CustomError";
 
 describe("Given a BurgerController's getBurgerById method", () => {
   describe("When it receives a request to get a classic burger", () => {
@@ -45,9 +46,14 @@ describe("Given a BurgerController's getBurgerById method", () => {
     });
 
     describe("When it encounters an error", () => {
+      const expectedError: CustomError = new CustomError(
+        new Error("Test Error"),
+        500,
+        "Test Error",
+      );
       const burgersRepository: Pick<BurgerMongooseRepository, "getBurgerById"> =
         {
-          getBurgerById: jest.fn().mockRejectedValue("Test Error"),
+          getBurgerById: jest.fn().mockRejectedValue(expectedError),
         };
       const burgersController = new BurgerController(
         burgersRepository as BurgerRepository,
@@ -60,14 +66,13 @@ describe("Given a BurgerController's getBurgerById method", () => {
       const next = jest.fn();
 
       test("Then it should call its nextMethod with the error", async () => {
-        const expectedStatusCode = 500;
         await burgersController.getBurgerById(
           req as Request,
           res as Response,
           next as NextFunction,
         );
 
-        expect(next).toHaveBeenCalledWith(expectedStatusCode);
+        expect(next).toHaveBeenCalledWith(expectedError);
       });
     });
   });

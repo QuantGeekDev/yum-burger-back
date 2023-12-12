@@ -16,14 +16,14 @@ class BurgerMongooseRepository implements BurgerRepository {
   ): Promise<BurgerStructure[]> => {
     try {
       if (!options || !("limit" in options)) {
-        const { limit } = defaultOptions;
-        const burgers = await Burger.find().limit(limit!).lean();
+        const { limit = 10 } = defaultOptions;
+        const burgers = await Burger.find().limit(limit).lean();
 
         return burgers as BurgerStructure[];
       }
 
-      const { limit } = options;
-      const burgers = await Burger.find({}).limit(limit!).lean();
+      const { limit = 10 } = options;
+      const burgers = await Burger.find({}).limit(limit).lean();
 
       return burgers as BurgerStructure[];
     } catch (error) {
@@ -51,7 +51,7 @@ class BurgerMongooseRepository implements BurgerRepository {
 
   getBurgerById = async (id: string) => {
     try {
-      const requestedBurger = await Burger.findById({ _id: id });
+      const requestedBurger = await Burger.findById(id);
       return requestedBurger as BurgerStructure;
     } catch (error) {
       throw new CustomError(error as Error, 500, "Error getting burger by id");

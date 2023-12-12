@@ -34,12 +34,14 @@ describe("Given a DELETE /burger/6567d60e9fbd027bb1696969 endpoint", () => {
   describe("When it receives a request to delete a Classic Burger", () => {
     test("Then it should delete the Classic Burger and return the Classic Burger and status code 200", async () => {
       const path = `/burgers/${classicBurgerMockId.toString()}`;
+      const classicBurgerName = "Classic Burger";
       const expectedStatusCode = 200;
       const response = await request(app)
         .delete(path)
         .expect(expectedStatusCode);
 
-      const burger = (await response.body.burger) as BurgerStructure;
+      const burger = response.body.burger as BurgerStructure;
+      expect(burger.name).toBe(classicBurgerName);
     });
   });
 
