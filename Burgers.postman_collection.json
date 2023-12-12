@@ -48,11 +48,11 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:1337/asdasd",
+              "raw": "http://localhost:1337/asdasdas",
               "protocol": "http",
               "host": ["localhost"],
               "port": "1337",
-              "path": ["asdasd"]
+              "path": ["asdasdas"]
             }
           },
           "response": []
@@ -73,14 +73,78 @@
           "response": []
         },
         {
+          "name": "getBurgerById Dev",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:1337/burgers/6567d60e9fbd027bb1d9d750",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["burgers", "6567d60e9fbd027bb1d9d750"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete Burgers Dev",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"_id\": \"65732d56ed518fdc7ce26eb0\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1337/burgers/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["burgers", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Burgers Dev",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Vegasssn Burger\",\r\n  \"price\": 11,\r\n  \"isOrdered\": false,\r\n  \"ingredients\": [\"Brioche buns\", \"Vegan Ham\", \"Cheese\"],\r\n  \"imageUrl\":\r\n    \"https://i.ibb.co/nMhsNVJ/rice-burger-with-salmon-cutlet-avocado-and-soy-sa-2021-12-09-07-32-56-utc.jpg\",\r\n  \"badges\": [\"Vegan\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1337/burgers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["burgers"]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "ping Dev",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://alex-andru-202309-bcn-back.onrender.com/",
-              "protocol": "https",
-              "host": ["alex-andru-202309-bcn-back", "onrender", "com"],
+              "raw": "http://localhost:1337/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
               "path": [""]
             }
           },

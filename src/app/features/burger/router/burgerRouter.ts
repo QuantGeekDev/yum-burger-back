@@ -8,5 +8,6 @@ const burgerRepository = new BurgerMongooseRepository();
 const burgerController = new BurgerController(burgerRepository);
 
 burgerRouter.get("/", burgerController.getBurgers);
+burgerRouter.get("/:id", burgerController.getBurgerById);
 burgerRouter.delete("/:id", burgerController.deleteBurger);
 burgerRouter.post("/", burgerController.addBurger);

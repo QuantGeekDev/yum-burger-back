@@ -4,6 +4,7 @@ export interface BurgerRepository {
   getBurgers: (options?: BurgerRepositoryOptions) => Promise<BurgerStructure[]>;
   deleteBurger: (id: string) => Promise<BurgerStructure>;
   addBurger: (burger: BurgerStructure) => Promise<BurgerStructure>;
+  getBurgerById: (id: string) => Promise<BurgerStructure>;
 }
 
 export interface BurgerRepositoryOptions {
