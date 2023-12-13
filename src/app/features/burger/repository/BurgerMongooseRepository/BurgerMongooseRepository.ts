@@ -1,6 +1,10 @@
 import CustomError from "../../../../../server/CustomError/CustomError.js";
 import Burger from "../../model/Burger.js";
-import { type BurgerStructure } from "../../types.js";
+import {
+  type BurgerFromMongooseStructureWithObjectId,
+  type BurgerFromMongooseStructure,
+  type BurgerStructure,
+} from "../../types.js";
 import {
   type BurgerRepositoryOptions,
   type BurgerRepository,
@@ -55,6 +59,20 @@ class BurgerMongooseRepository implements BurgerRepository {
       return requestedBurger as BurgerStructure;
     } catch (error) {
       throw new CustomError(error as Error, 500, "Error getting burger by id");
+    }
+  };
+
+  editBurger = async (
+    burger: BurgerFromMongooseStructure,
+  ): Promise<BurgerFromMongooseStructureWithObjectId> => {
+    try {
+      const editedBurger = await Burger.findByIdAndUpdate(burger._id, burger, {
+        returnDocument: "after",
+      });
+
+      return editedBurger as BurgerFromMongooseStructureWithObjectId;
+    } catch (error) {
+      throw new CustomError(error as Error, 500, "Error editing burger");
     }
   };
 }

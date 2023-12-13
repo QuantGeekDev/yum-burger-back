@@ -1,6 +1,10 @@
 import { type BurgerRepository } from "../repository/BurgerMongooseRepository/types.js";
 import { type NextFunction, type Request, type Response } from "express";
-import { type BurgerStructure, type TypedRequestBody } from "../types.js";
+import {
+  type BurgerFromMongooseStructure,
+  type BurgerStructure,
+  type TypedRequestBody,
+} from "../types.js";
 
 class BurgerController {
   constructor(private readonly repository: BurgerRepository) {}
@@ -48,6 +52,20 @@ class BurgerController {
 
       const requestedBurger = await this.repository.getBurgerById(id);
       res.status(200).json({ burger: requestedBurger });
+    } catch (customError) {
+      next(customError);
+    }
+  };
+
+  editBurger = async (
+    req: TypedRequestBody<BurgerFromMongooseStructure>,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    try {
+      const { body: burgerToBeEdited } = req;
+      const editedBurger = await this.repository.editBurger(burgerToBeEdited);
+      res.status(200).json({ burger: editedBurger });
     } catch (customError) {
       next(customError);
     }
