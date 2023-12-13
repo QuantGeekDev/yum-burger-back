@@ -5,6 +5,7 @@ export interface BurgerStructure {
   price: number;
   imageUrl: string;
   ingredients: string;
+  calories: number;
   isOrdered: boolean;
   isVegan: boolean;
   hasGluten: boolean;

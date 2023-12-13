@@ -6,6 +6,7 @@ import {
 export const classicBurgerMock: BurgerStructure = {
   name: "Classic Burger",
   price: 5,
+  calories: 650,
   isOrdered: false,
   ingredients: "Brioche buns,  ham",
   imageUrl:
@@ -18,6 +19,7 @@ export const cheeseBurgerMock: BurgerStructure = {
   name: "Cheese Burger",
   price: 6,
   isOrdered: false,
+  calories: 650,
   ingredients: "Brioche buns,  ham,  cheese",
   imageUrl:
     "https://i.ibb.co/nMhsNVJ/rice-burger-with-salmon-cutlet-avocado-and-soy-sa-2021-12-09-07-32-56-utc.jpg",
@@ -29,6 +31,7 @@ export const veganBurgerMock: BurgerStructure = {
   name: "Vegan Burger",
   price: 11,
   isOrdered: false,
+  calories: 650,
   ingredients: "Brioche buns, vegan ham, vegan cheese",
   imageUrl:
     "https://i.ibb.co/nMhsNVJ/rice-burger-with-salmon-cutlet-avocado-and-soy-sa-2021-12-09-07-32-56-utc.jpg",
@@ -43,6 +46,7 @@ export const burgersMockWithoutClassicBurger = [cheeseBurgerMock];
 export const classicBurgerFromDbMock: BurgerFromMongooseStructure = {
   _id: "6567d60e9fbd027bb1696969",
   name: "Classic Burger",
+  calories: 650,
   price: 5,
   isOrdered: false,
   ingredients: "Brioche buns, vegan ham, vegan cheese",
@@ -56,6 +60,7 @@ export const cheeseBurgerFromDbMock: BurgerFromMongooseStructure = {
   _id: "6567d60e9fbd027bb1d9d722",
   name: "Cheese Burger",
   price: 6,
+  calories: 670,
   isOrdered: false,
   ingredients: "Brioche buns, vegan ham, vegan cheese",
   imageUrl:
@@ -68,6 +73,7 @@ export const veganBurgerFromDbMock: BurgerFromMongooseStructure = {
   _id: "6567d60e9fbd027bb1d9d110",
   name: "Vegan Burger",
   price: 11,
+  calories: 550,
   isOrdered: false,
   ingredients: "Brioche buns, vegan ham, vegan cheese",
   imageUrl:
@@ -85,6 +91,7 @@ export const editedCheeseBurgerMock: BurgerFromMongooseStructure = {
   _id: "6567d60e9fbd027bb1d9d722",
   name: "Cheese Burger",
   price: 15,
+  calories: 650,
   isOrdered: false,
   ingredients: "Brioche buns,  ham,  cheese",
   imageUrl:
