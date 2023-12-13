@@ -32,7 +32,7 @@ describe("Given a PUT /burgers/:id endpoint", () => {
     test("Then it should return a status code 200 and a Cheeseburger with price 15", async () => {
       const expectedStatusCode = 200;
       const expectedNewPrice = 15;
-      const path = `/burgers/${cheeseBurgerMockId.toString()}`;
+      const path = "/burgers/";
       const editedCheeseBurger = editedCheeseBurgerMock;
       editedCheeseBurger._id = cheeseBurgerMockId.toString();
       const response = await request(app)
@@ -51,7 +51,7 @@ describe("Given a PUT /burgers/:id endpoint", () => {
       jest.spyOn(Burger, "findByIdAndUpdate").mockRejectedValue("Error");
       const expectedStatusCode = 500;
       const expectedErrorMessage = "Error editing burger";
-      const path = `/burgers/${cheeseBurgerMockId.toString()}`;
+      const path = "/burgers/";
       const editedCheeseBurger = editedCheeseBurgerMock;
       editedCheeseBurger._id = cheeseBurgerMockId.toString();
 
