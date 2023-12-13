@@ -4,9 +4,10 @@ const burgerSchema = new Schema({
   name: { type: String, require: true },
   price: { type: Number, require: true },
   imageUrl: { type: String, require: true },
-  ingredients: { type: Array<string>, require: true },
+  ingredients: { type: String, require: true },
   isOrdered: { type: Boolean, require: true },
-  badges: { type: Array<string>, require: false },
+  isVegan: { type: Boolean, require: false },
+  hasGluten: { type: Boolean, require: false },
 });
 
 const Burger = model("Burger", burgerSchema, "burgers");

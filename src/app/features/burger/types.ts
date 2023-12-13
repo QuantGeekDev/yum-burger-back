@@ -4,12 +4,18 @@ export interface BurgerStructure {
   name: string;
   price: number;
   imageUrl: string;
-  ingredients: string[];
+  ingredients: string;
   isOrdered: boolean;
-  badges: string[];
+  isVegan: boolean;
+  hasGluten: boolean;
 }
 
 export interface BurgerFromMongooseStructure extends BurgerStructure {
+  _id: string;
+}
+
+export interface BurgerFromMongooseStructureWithObjectId
+  extends BurgerStructure {
   _id: Types.ObjectId;
 }
 export interface TypedRequestBody<T> extends Express.Request {

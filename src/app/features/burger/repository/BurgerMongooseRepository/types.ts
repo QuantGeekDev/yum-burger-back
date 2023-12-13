@@ -1,4 +1,5 @@
 import {
+  type BurgerFromMongooseStructureWithObjectId,
   type BurgerFromMongooseStructure,
   type BurgerStructure,
 } from "../../types.js";
@@ -10,7 +11,7 @@ export interface BurgerRepository {
   getBurgerById: (id: string) => Promise<BurgerStructure>;
   editBurger: (
     burger: BurgerFromMongooseStructure,
-  ) => Promise<BurgerFromMongooseStructure>;
+  ) => Promise<BurgerFromMongooseStructureWithObjectId>;
 }
 
 export interface BurgerRepositoryOptions {
