@@ -81,4 +81,16 @@ export const burgersFromDbMock = [
   cheeseBurgerFromDbMock,
 ];
 
+export const editedCheeseBurgerMock: BurgerFromMongooseStructure = {
+  _id: "6567d60e9fbd027bb1d9d722",
+  name: "Cheese Burger",
+  price: 15,
+  isOrdered: false,
+  ingredients: "Brioche buns,  ham,  cheese",
+  imageUrl:
+    "https://i.ibb.co/nMhsNVJ/rice-burger-with-salmon-cutlet-avocado-and-soy-sa-2021-12-09-07-32-56-utc.jpg",
+  isVegan: false,
+  hasGluten: true,
+};
+
 export const burgersFromDbMockWithoutClassicBurger = [cheeseBurgerFromDbMock];

@@ -1,4 +1,3 @@
-import { Types, type Query } from "mongoose";
 import CustomError from "../../../../../server/CustomError/CustomError.js";
 import Burger from "../../model/Burger.js";
 import {
@@ -67,7 +66,10 @@ class BurgerMongooseRepository implements BurgerRepository {
     burger: BurgerFromMongooseStructure,
   ): Promise<BurgerFromMongooseStructureWithObjectId> => {
     try {
-      const editedBurger = await Burger.findByIdAndUpdate(burger._id, burger);
+      const editedBurger = await Burger.findByIdAndUpdate(burger._id, burger, {
+        returnDocument: "after",
+      });
+
       return editedBurger as BurgerFromMongooseStructureWithObjectId;
     } catch (error) {
       throw new CustomError(error as Error, 500, "Error editing burger");

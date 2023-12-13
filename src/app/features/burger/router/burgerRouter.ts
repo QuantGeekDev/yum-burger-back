@@ -10,4 +10,5 @@ const burgerController = new BurgerController(burgerRepository);
 burgerRouter.get("/", burgerController.getBurgers);
 burgerRouter.get("/:id", burgerController.getBurgerById);
 burgerRouter.delete("/:id", burgerController.deleteBurger);
+burgerRouter.put("/:id", burgerController.editBurger);
 burgerRouter.post("/", burgerController.addBurger);

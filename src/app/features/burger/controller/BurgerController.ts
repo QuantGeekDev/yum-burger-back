@@ -63,8 +63,8 @@ class BurgerController {
     next: NextFunction,
   ) => {
     try {
-      const { body: burger } = req;
-      const editedBurger = await this.repository.editBurger(burger);
+      const { body: burgerToBeEdited } = req;
+      const editedBurger = await this.repository.editBurger(burgerToBeEdited);
       res.status(200).json({ burger: editedBurger });
     } catch (customError) {
       next(customError);
