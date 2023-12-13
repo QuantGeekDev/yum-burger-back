@@ -1,3 +1,5 @@
+import { type Types } from "mongoose";
+
 export interface BurgerStructure {
   name: string;
   price: number;
@@ -8,7 +10,7 @@ export interface BurgerStructure {
 }
 
 export interface BurgerFromMongooseStructure extends BurgerStructure {
-  _id: string;
+  _id: Types.ObjectId;
 }
 export interface TypedRequestBody<T> extends Express.Request {
   body: T;
