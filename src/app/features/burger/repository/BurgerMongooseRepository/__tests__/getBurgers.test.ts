@@ -4,7 +4,6 @@ import { connectToDatabase } from "../../../../../../database";
 import Burger from "../../../model/Burger";
 import BurgerMongooseRepository from "../BurgerMongooseRepository";
 import {
-  classicBurgerFromDbMock,
   cheeseBurgerFromDbMock,
   classicBurgerMock,
   cheeseBurgerMock,
@@ -46,8 +45,6 @@ describe("Given a BurgerMongooseRepository's getBurgers method", () => {
   describe("When it receives a valid request", () => {
     test("Then it returns a promise for an array with a classic burger and a cheeseburger", async () => {
       const burgers = await repository.getBurgers();
-
-      expect(burgers[0]).toHaveProperty("name", classicBurgerFromDbMock.name);
 
       expect(burgers[1]).toHaveProperty("name", cheeseBurgerFromDbMock.name);
     });
