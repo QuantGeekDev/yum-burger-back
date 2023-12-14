@@ -21,13 +21,19 @@ class BurgerMongooseRepository implements BurgerRepository {
     try {
       if (!options || !("limit" in options)) {
         const { limit = 10 } = defaultOptions;
-        const burgers = await Burger.find().limit(limit).lean();
+        const burgers = await Burger.find()
+          .limit(limit)
+          .lean()
+          .sort({ _id: -1 });
 
         return burgers as BurgerStructure[];
       }
 
       const { limit = 10 } = options;
-      const burgers = await Burger.find({}).limit(limit).lean();
+      const burgers = await Burger.find({})
+        .limit(limit)
+        .lean()
+        .sort({ _id: -1 });
 
       return burgers as BurgerStructure[];
     } catch (error) {

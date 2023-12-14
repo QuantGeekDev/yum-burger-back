@@ -33,8 +33,8 @@ describe("Given a GET /burgers route", () => {
       const response = await request(app).get(path).expect(expectedStatusCode);
       const burgers = (await response.body.burgers) as BurgerStructure[];
 
-      expect(burgers[0]).toHaveProperty("name", classicBurgerFromDbMock.name);
-      expect(burgers[1]).toHaveProperty("name", cheeseBurgerFromDbMock.name);
+      expect(burgers[0]).toHaveProperty("name", cheeseBurgerFromDbMock.name);
+      expect(burgers[1]).toHaveProperty("name", classicBurgerFromDbMock.name);
     });
   });
 

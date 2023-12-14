@@ -136,6 +136,30 @@
           "response": []
         },
         {
+          "name": "Modify Burger Dev",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"_id\": \"6567d60e9fbd027bb1d9d750\",\r\n  \"name\": \"Vegasssn Burger\",\r\n  \"price\": 11,\r\n  \"isOrdered\": false,\r\n  \"ingredients\": \"Brioche buns\",\r\n  \"isVegan\": true,\r\n  \"hasGluten\": true,\r\n  \"imageUrl\":\r\n    \"https://i.ibb.co/nMhsNVJ/rice-burger-with-salmon-cutlet-avocado-and-soy-sa-2021-12-09-07-32-56-utc.jpg\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1337/burgers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "1337",
+              "path": ["burgers"]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "ping Dev",
           "request": {
             "method": "GET",
