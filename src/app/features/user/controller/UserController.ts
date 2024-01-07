@@ -6,15 +6,19 @@ import CustomError from "../../../../server/CustomError/CustomError.js";
 class UserController {
   registerUser = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const userToBeRegistered = req.body as { body: UserDocument };
+      const userToBeRegistered = req.body as UserDocument;
+
+      const { email } = userToBeRegistered;
+
+      const isUserAlreadyRegister = await User.findOne({ email });
+      if (isUserAlreadyRegister) {
+        const error = Error("User already registered");
+        throw new CustomError(error, 409, error.message);
+      }
+
       const user = await User.create(userToBeRegistered);
       res.status(201).json({ user });
-    } catch (error) {
-      const customError = new CustomError(
-        error as Error,
-        500,
-        "Unable to register user",
-      );
+    } catch (customError) {
       next(customError);
     }
   };
