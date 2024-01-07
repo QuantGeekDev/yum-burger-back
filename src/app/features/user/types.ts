@@ -1,4 +1,6 @@
-export interface UserStructure {
+import type mongoose from "mongoose";
+
+export interface UserStructure extends mongoose.Document {
   name: string;
   email: string;
   password: string;

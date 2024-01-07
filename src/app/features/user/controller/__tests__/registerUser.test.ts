@@ -2,18 +2,18 @@ import { type Request, type Response } from "express";
 import { type NextFunction } from "express-serve-static-core";
 import { type UserRepository } from "../../types";
 import UserController from "../UserController";
-import { testUserMock } from "../../mocks/userMockData";
+import { testUserMock2 } from "../../mocks/userMockData";
 
 describe("Given a UserController's registerUser method", () => {
   describe("When it receives a response and a request to register new user 'testuser@gmail.com'", () => {
     const userRepository: Pick<UserRepository, "registerUser"> = {
-      registerUser: jest.fn().mockResolvedValue(testUserMock),
+      registerUser: jest.fn().mockResolvedValue(testUserMock2),
     };
 
     const userController = new UserController(userRepository);
 
     const req: Pick<Request, "body"> = {
-      body: testUserMock,
+      body: testUserMock2,
     };
     const res: Pick<Response, "json" | "status"> = {
       json: jest.fn().mockReturnThis(),
@@ -39,7 +39,7 @@ describe("Given a UserController's registerUser method", () => {
         next as NextFunction,
       );
 
-      expect(res.json).toHaveBeenCalledWith({ registeredUser: testUserMock });
+      expect(res.json).toHaveBeenCalledWith({ registeredUser: testUserMock2 });
     });
   });
 });
