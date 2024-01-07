@@ -40,9 +40,11 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/morgan": "^1.9.9",
     "@types/supertest": "^2.0.16",
+    "bcrypt": "^5.1.1",
     "chalk": "^4",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
