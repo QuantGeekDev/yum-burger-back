@@ -10,7 +10,12 @@ export const connectToDatabase = async (mongoUrl: string) => {
   try {
     await mongoose.connect(mongoUrl);
     mongoose.set("debug", true);
-    debug(chalk(`Succesfully connected to ${mongoUrl}`));
+    if (process.env.IS_STREAMING) {
+      debug(chalk.yellowBright("Streaming mode enabled"));
+      debug(chalk(`Succesfully connected to Database`));
+    } else {
+      debug(chalk(`Succesfully connected to ${mongoUrl}`));
+    }
   } catch (error) {
     debug(chalk(`Error connecting to database: ${error}`));
   }
