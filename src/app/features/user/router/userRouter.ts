@@ -1,8 +1,10 @@
 import Router from "express";
 import UserController from "../controller/UserController.js";
+import UserMongooseRepository from "../repository/UserMongooseRepository.js";
 
 const userRouter = Router();
-const userController = new UserController();
+const userRepository = new UserMongooseRepository();
+const userController = new UserController(userRepository);
 
 userRouter.post("/register", userController.registerUser);
 

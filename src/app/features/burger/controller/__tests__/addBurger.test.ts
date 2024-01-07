@@ -1,4 +1,4 @@
-import { NextFunction, type Response } from "express";
+import { type Response } from "express";
 import {
   veganBurgerFromDbMock,
   veganBurgerMock,
