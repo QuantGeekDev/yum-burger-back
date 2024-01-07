@@ -10,6 +10,7 @@ import {
 } from "./middlewares/errorMiddleware.js";
 import pingController from "../app/features/ping/controller/pingController.js";
 import { burgerRouter } from "../app/features/burger/router/burgerRouter.js";
+import userRouter from "../app/features/user/router/userRouter.js";
 
 const debug = debugCreator("server:");
 
@@ -31,6 +32,7 @@ app.use(cors(corsOptions));
 
 app.get("/", pingController);
 app.use("/burgers", burgerRouter);
+app.use("/auth", userRouter);
 
 app.use(notFoundMiddleware);
 

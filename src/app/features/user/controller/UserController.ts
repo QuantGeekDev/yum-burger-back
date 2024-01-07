@@ -1,7 +1,7 @@
 import { type Response, type Request, type NextFunction } from "express";
-import User from "../model/User";
-import { type UserDocument } from "../types";
-import CustomError from "../../../../server/CustomError/CustomError";
+import User from "../model/User.js";
+import { type UserDocument } from "../types.js";
+import CustomError from "../../../../server/CustomError/CustomError.js";
 
 class UserController {
   registerUser = async (req: Request, res: Response, next: NextFunction) => {
