@@ -33,7 +33,8 @@ class UserMongooseRepository implements UserRepository {
     try {
       const databaseUser = await User.findOne({ email });
       if (!databaseUser) {
-        throw new Error("Error retrieving user from database");
+        const error = Error("User doesn't exist");
+        throw new CustomError(error, 500, error.message);
       }
 
       return databaseUser;

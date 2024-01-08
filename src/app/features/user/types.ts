@@ -1,4 +1,3 @@
-import { type Jwt } from "jsonwebtoken";
 import type mongoose from "mongoose";
 
 export interface UserStructure extends mongoose.Document {

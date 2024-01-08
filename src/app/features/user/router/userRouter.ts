@@ -7,5 +7,6 @@ const userRepository = new UserMongooseRepository();
 const userController = new UserController(userRepository);
 
 userRouter.post("/register", userController.registerUser);
+userRouter.get("/login", userController.loginUser);
 
 export default userRouter;

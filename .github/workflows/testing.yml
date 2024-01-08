@@ -6,7 +6,8 @@ jobs:
   test:
     name: Tests passes
     runs-on: ubuntu-latest
-
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
     steps:
       - name: ⬇ Git checkout
         uses: actions/checkout@v3

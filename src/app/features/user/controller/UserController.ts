@@ -56,7 +56,8 @@ class UserController {
         secretKey,
         { expiresIn: "3 days" },
       );
-      res.status(200).send(token);
+
+      res.status(200).json({ token });
     } catch (error) {
       next(error);
     }
