@@ -10,7 +10,7 @@ describe("Given a UserController's registerUser method", () => {
       registerUser: jest.fn().mockResolvedValue(testUserMock2),
     };
 
-    const userController = new UserController(userRepository);
+    const userController = new UserController(userRepository as UserRepository);
 
     const req: Pick<Request, "body"> = {
       body: testUserMock2,

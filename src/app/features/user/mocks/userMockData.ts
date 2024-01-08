@@ -5,6 +5,13 @@ export const testUserMock = {
   isAdmin: true,
 };
 
+export const registeredTestUserMock = {
+  name: "John",
+  email: "testuser@gmail.com",
+  password: "$2b$08$se6LJhlFQtAqd2JWEO.fgOzQb1oMWlz25VcBrnM0o8qq17ztIMe0m",
+  isAdmin: true,
+};
+
 export const testUserMock2 = {
   name: "John",
   email: "testuser2@gmail.com",
