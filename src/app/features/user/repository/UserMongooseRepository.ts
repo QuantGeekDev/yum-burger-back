@@ -1,4 +1,3 @@
-import { type Jwt } from "jsonwebtoken";
 import CustomError from "../../../../server/CustomError/CustomError.js";
 import User from "../model/User.js";
 import { type UserStructure, type UserRepository } from "../types";

@@ -1,6 +1,5 @@
 import { type Response, type Request, type NextFunction } from "express";
-import { type Secret, type JwtPayload } from "jsonwebtoken";
-import jwt from "jsonwebtoken";
+import jwt, { type Secret, type JwtPayload } from "jsonwebtoken";
 import CustomError from "../CustomError/CustomError.js";
 
 export interface JwtRequest extends Request {
