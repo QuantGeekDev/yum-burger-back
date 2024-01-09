@@ -38,6 +38,7 @@ class UserController {
       const userToBeLoggedIn = req.body as UserStructure;
       const databaseUser: UserStructure =
         await this.userRepository.getUserByEmail(userToBeLoggedIn);
+
       const match = await bcrypt.compare(
         userToBeLoggedIn.password,
         databaseUser.password,
